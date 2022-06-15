@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
 
     int currentSize = 0;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update.
     void Start()
     {
         itemValues.Add("flipflop", 5);
@@ -40,7 +40,7 @@ public class PlayerManager : MonoBehaviour
         timerIsRunning = true;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame.
     void Update()
     {   
         if(Input.touchCount > 0){
