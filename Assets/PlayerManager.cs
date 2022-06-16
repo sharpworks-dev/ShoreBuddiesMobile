@@ -91,7 +91,7 @@ public class PlayerManager : MonoBehaviour
             if(currentSize < inventorySize)
             {
                 int num = 0;
-                
+                AddPointsForItem(col.gameObject.name);
                 currentSize++;
                 Destroy(col.gameObject);
             }
@@ -108,7 +108,7 @@ public class PlayerManager : MonoBehaviour
             targetPos = new Vector2(transform.position.x, transform.position.y);
             foreach(KeyValuePair<string,int> item in list)
             {
-                AddPointsForItem(col.gameObject.name);
+                
                 itemsCollected ++;
             }
             list.Clear(); 
