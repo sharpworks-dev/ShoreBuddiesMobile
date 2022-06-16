@@ -5,6 +5,7 @@ using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
+    [SerializeField]int playerSelection;
     [SerializeField]float moveSpeed;
     [SerializeField]int inventorySize;
     [SerializeField]TextMeshProUGUI timerText;
@@ -29,6 +30,8 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update.
     void Start()
     {
+        playerSelection = 1;
+        EnableSelectedCharacter(playerSelection);
         itemValues.Add("flipflop", 5);
         itemValues.Add("can", 5);
         itemValues.Add("bottle", 5); 
@@ -37,7 +40,6 @@ public class PlayerManager : MonoBehaviour
         itemValues.Add("toothbrush", 10); 
         itemValues.Add("milkCarton", 10);
         itemValues.Add("battery", 20); 
-        renderer = GetComponent<SpriteRenderer>();
         targetPos = transform.position;
         timerIsRunning = true;
         items = new string[inventorySize];
@@ -76,6 +78,39 @@ public class PlayerManager : MonoBehaviour
 
         itemsText.text = "Items: " + currentSize + "/" + inventorySize;
         scoreText.text = "Score: " + score;
+    }
+
+    void EnableSelectedCharacter(int childIndex){
+        for(int i = 0; i < transform.childCount; i++){
+            this.gameObject.transform.GetChild(i).gameObject.SetActive(false);
+            if(i == childIndex){
+                GameObject player = this.gameObject.transform.GetChild(i).gameObject;
+                player.SetActive(true);
+                renderer = player.GetComponent<SpriteRenderer>();
+            }
+        }
+        switch(childIndex){
+            case 0:
+                moveSpeed = 60;
+                inventorySize = 1;
+                break;
+            case 1:
+                moveSpeed = 40;
+                inventorySize = 2;
+                break;
+            case 2: 
+                moveSpeed = 20;
+                inventorySize = 4;
+                break;
+            case 3:
+                moveSpeed = 15;
+                inventorySize = 6;
+                break;
+            case 4:
+                moveSpeed = 10;
+                inventorySize = 8;
+                break;
+        }
     }
 
     void DisplayTime(float timeToDisplay)
