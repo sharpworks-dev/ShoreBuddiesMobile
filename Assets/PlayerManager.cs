@@ -92,7 +92,6 @@ public class PlayerManager : MonoBehaviour
             {
                 int num = 0;
                 
-                AddPointsForItem(col.gameObject.name);
                 currentSize++;
                 Destroy(col.gameObject);
             }
@@ -109,7 +108,7 @@ public class PlayerManager : MonoBehaviour
             targetPos = new Vector2(transform.position.x, transform.position.y);
             foreach(KeyValuePair<string,int> item in list)
             {
-                score += item.Value;
+                AddPointsForItem(col.gameObject.name);
                 itemsCollected ++;
             }
             list.Clear(); 
