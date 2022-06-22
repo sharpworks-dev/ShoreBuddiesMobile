@@ -8,18 +8,18 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 0618e72ea0a0948a182116b37a7665a9
-  - enabled: 1
-    path: Assets/Scenes/NickScene.unity
-    guid: 1a38d2a311c07ab43a5b3362dcfb2468
   - enabled: 1
     path: Assets/Scenes/ConnectToServer.unity
     guid: a240955a94d1f42a0b509c253a800ad5
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: b2e95725793c14d5fa152e04fce29f44
+  - enabled: 1
+    path: Assets/Scenes/NickScene.unity
+    guid: 1a38d2a311c07ab43a5b3362dcfb2468
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 27f5e6d832d5a1e4ab2d5824a896d2c0, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: d7066debe6e507d4cb23e38905a80ec2, type: 2}

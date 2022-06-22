@@ -12,6 +12,10 @@ public class RoomItem : MonoBehaviour
 	public TMP_Text roomName;
 	LobbyManager manager;
 
+	void Awake(){
+		roomName = GameObject.Find("Room Name").GetComponent<TMP_Text>();
+	}
+	
 	public void Start()
 	{
 		manager = FindObjectOfType<LobbyManager>();
