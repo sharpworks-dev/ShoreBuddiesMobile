@@ -17,10 +17,12 @@ public class PlayerManager : MonoBehaviour
     SpriteRenderer renderer;
     Vector2 targetPos;
     int score = 0;
+    int scoreTemp = 0;
     int itemsCollected = 0;
     List<KeyValuePair<string, int>> list = new List<KeyValuePair<string, int>>();
     List<string> uniqueList = new List<string>();
     Dictionary<string, int> itemValues = new Dictionary<string, int>();
+    string[] items;
 
     int currentSize = 0;
 
@@ -29,15 +31,16 @@ public class PlayerManager : MonoBehaviour
     {
         itemValues.Add("flipflop", 5);
         itemValues.Add("can", 5);
-        itemValues.Add("ring", 10); 
-        itemValues.Add("battery", 20); 
         itemValues.Add("bottle", 5); 
+        itemValues.Add("ring", 10); 
         itemValues.Add("straw", 10); 
         itemValues.Add("toothbrush", 10); 
-        itemValues.Add("milkcarton", 10);
+        itemValues.Add("milkCarton", 10);
+        itemValues.Add("battery", 20); 
         renderer = GetComponent<SpriteRenderer>();
         targetPos = transform.position;
         timerIsRunning = true;
+        items = new string[inventorySize];
     }
 
     // Update is called once per frame.
@@ -90,13 +93,10 @@ public class PlayerManager : MonoBehaviour
             targetPos = new Vector2(transform.position.x, transform.position.y);
             if(currentSize < inventorySize)
             {
-                int num = 0;
-                
                 AddPointsForItem(col.gameObject.name);
                 currentSize++;
                 Destroy(col.gameObject);
             }
-            
         }
 
         else if (col.gameObject.tag == "Obstacle")
@@ -107,25 +107,21 @@ public class PlayerManager : MonoBehaviour
         else if (col.gameObject.tag == "TrashBin" || col.gameObject.tag == "RecycleBin")
         {
             targetPos = new Vector2(transform.position.x, transform.position.y);
-            foreach(KeyValuePair<string,int> item in list)
-            {
-                score += item.Value;
-                itemsCollected ++;
-            }
-            list.Clear(); 
+            score += scoreTemp;
+            scoreTemp = 0;
             currentSize = 0;
-            Debug.Log(score);
-            Debug.Log(itemsCollected);
+            // Debug.Log(score);
+            // Debug.Log(itemsCollected);
         }
         
     }
 
     void AddPointsForItem(string itemName){
-        if(uniqueList.Contains(itemName))
-            score += itemValues[itemName];
-        else{
+        scoreTemp += itemValues[itemName];
+        if(!uniqueList.Contains(itemName)){
+            scoreTemp += (uniqueList.Count - 1) * 5;
             uniqueList.Add(itemName);
-            score += (uniqueList.Count - 1) * 5;
         }
+        Debug.Log("scoreTemp: " + scoreTemp);
     }
 }
