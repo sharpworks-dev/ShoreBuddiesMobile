@@ -8,22 +8,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]int playerSelection;
     [SerializeField]float moveSpeed;
     [SerializeField]int inventorySize;
-    [SerializeField]TextMeshProUGUI timerText;
-    [SerializeField]TextMeshProUGUI itemsText;
-    [SerializeField]TextMeshProUGUI scoreText;
 
     //Hide in inspect fields
-    float timeRemaining = 10;
-    bool timerIsRunning = false;
+    int[] characterMoveSpeeds = new int[5]{60, 40, 20, 15, 10};
+    int[] characterInventorySizes = new int[5]{1, 2, 4, 6, 8};
     SpriteRenderer renderer;
     Vector2 targetPos;
-    int score = 0;
-    int scoreTemp = 0;
     int itemsCollected = 0;
-    List<KeyValuePair<string, int>> list = new List<KeyValuePair<string, int>>();
+    int scoreTemp = 0;
     List<string> uniqueList = new List<string>();
     Dictionary<string, int> itemValues = new Dictionary<string, int>();
-    string[] items;
 
     int currentSize = 0;
 
@@ -41,8 +35,6 @@ public class PlayerManager : MonoBehaviour
         itemValues.Add("milkCarton", 10);
         itemValues.Add("battery", 20); 
         targetPos = transform.position;
-        timerIsRunning = true;
-        items = new string[inventorySize];
     }
 
     // Update is called once per frame.
@@ -60,22 +52,6 @@ public class PlayerManager : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed*Time.deltaTime);
         }
 
-        if (timerIsRunning)
-        {
-            if (timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
-            }
-            else
-            {
-                Debug.Log("Time has run out!");
-                timerText.text = "Game over";
-                timeRemaining = 0;
-                timerIsRunning = false;
-            }
-        }
-
         itemsText.text = "Items: " + currentSize + "/" + inventorySize;
         scoreText.text = "Score: " + score;
     }
@@ -89,36 +65,8 @@ public class PlayerManager : MonoBehaviour
                 renderer = player.GetComponent<SpriteRenderer>();
             }
         }
-        switch(childIndex){
-            case 0:
-                moveSpeed = 60;
-                inventorySize = 1;
-                break;
-            case 1:
-                moveSpeed = 40;
-                inventorySize = 2;
-                break;
-            case 2: 
-                moveSpeed = 20;
-                inventorySize = 4;
-                break;
-            case 3:
-                moveSpeed = 15;
-                inventorySize = 6;
-                break;
-            case 4:
-                moveSpeed = 10;
-                inventorySize = 8;
-                break;
-        }
-    }
-
-    void DisplayTime(float timeToDisplay)
-    {
-        timeToDisplay += 1;
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        moveSpeed = characterMoveSpeeds[childIndex];
+        inventorySize = characterInventorySizes[childIndex];
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -145,10 +93,7 @@ public class PlayerManager : MonoBehaviour
             score += scoreTemp;
             scoreTemp = 0;
             currentSize = 0;
-            // Debug.Log(score);
-            // Debug.Log(itemsCollected);
         }
-        
     }
 
     void AddPointsForItem(string itemName){
