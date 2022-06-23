@@ -25,16 +25,30 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public PlayerItem playerItemPrefab;
     public Transform playerItemParent;
 
+    public GameObject playButton;
+
     private void Start()
     {
     	PhotonNetwork.JoinLobby();
+    }
+
+    private void Update() 
+    {
+        if(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+        {
+            playButton.SetActive(true);
+        }
+        else
+        {
+            playButton.SetActive(false);
+        }
     }
 
     public void OnClickCreate()
     {
     	if(roomInputField.text.Length >= 1)
     	{
-    		PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions(){ MaxPlayers = 4});
+    		PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions(){ MaxPlayers = 4, BroadcastPropsChangeToAll = true});
     	}
     }
 
@@ -110,6 +124,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
             PlayerItem newPlayerItem = Instantiate(playerItemPrefab, playerItemParent);
+            newPlayerItem.SetPlayerInfo(player.Value);
+
+            if(player.Value == PhotonNetwork.LocalPlayer)
+            {
+                newPlayerItem.ApplyLocalChanges();
+            }
             playerItemsList.Add(newPlayerItem);
         }
     }
@@ -122,5 +142,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         UpdatePlayerList();
-    } 
+    }
+
+    public void OnClickPlayButton()
+    {
+        PhotonNetwork.LoadLevel("NickScene");
+    }
 }
