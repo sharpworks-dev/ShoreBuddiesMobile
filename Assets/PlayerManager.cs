@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerManager : MonoBehaviour
     List<string> uniqueList = new List<string>();
     Dictionary<string, int> itemValues = new Dictionary<string, int>();
     string[] items;
+    PhotonView view;
 
     int currentSize = 0;
 
@@ -41,21 +43,24 @@ public class PlayerManager : MonoBehaviour
         targetPos = transform.position;
         timerIsRunning = true;
         items = new string[inventorySize];
+        view = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame.
     void Update()
     {   
-        if(Input.touchCount > 0){
-            targetPos = new Vector2(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).x, Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).y);
-        }
+        if(view.IsMine){
+            if(Input.touchCount > 0){
+                targetPos = new Vector2(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).x, Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).y);
+            }
 
-        if(targetPos.x != transform.position.x || targetPos.y != transform.position.y){
-            if(targetPos.x > transform.position.x)
-                renderer.flipX = true;
-            else
-                renderer.flipX = false;
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed*Time.deltaTime);
+            if(targetPos.x != transform.position.x || targetPos.y != transform.position.y){
+                if(targetPos.x > transform.position.x)
+                    renderer.flipX = true;
+                else
+                    renderer.flipX = false;
+                transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed*Time.deltaTime);
+            }
         }
 
         if (timerIsRunning)
