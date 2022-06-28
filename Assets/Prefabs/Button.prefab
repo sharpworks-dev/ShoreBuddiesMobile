@@ -99,10 +99,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.051886797, g: 1, b: 0.27221265, a: 1}
-    m_PressedColor: {r: 0, g: 0.05660282, b: 0.9811321, a: 1}
-    m_SelectedColor: {r: 0.06460105, g: 0.9622642, b: 0.022694906, a: 1}
+    m_NormalColor: {r: 0.4292453, g: 0.8644454, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.4470588, g: 0.5788291, b: 1, a: 1}
+    m_PressedColor: {r: 0.15566039, g: 0.35925993, b: 1, a: 1}
+    m_SelectedColor: {r: 0.44705886, g: 0.5803922, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -121,7 +121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 353105479769967463}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &353105480953452908
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,8 +202,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
