@@ -50,8 +50,12 @@ public class PlayerManager : MonoBehaviour
         view = GetComponent<PhotonView>();
         myCamera.gameObject.SetActive(true);
         myCanvas.gameObject.SetActive(true);
-        CinemachineVirtualCamera myVCam = Instantiate(vCam, new Vector3(0, 0, 0), Quaternion.identity);
-        myVCam.Follow = gameObject.transform;
+        if(view.IsMine){
+            CinemachineVirtualCamera myVCam = Instantiate(vCam, new Vector3(0, 0, 0), Quaternion.identity, gameObject.transform);
+            myVCam.gameObject.SetActive(true);
+            myVCam.Follow = gameObject.transform;
+            myVCam.Priority = 10;
+        }
     }
 
     // Update is called once per frame.
