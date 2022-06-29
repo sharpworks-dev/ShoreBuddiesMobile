@@ -130,8 +130,19 @@ public class PlayerManager : MonoBehaviour
             // Debug.Log(score);
             // Debug.Log(itemsCollected);
         }
+
+        if(col.gameObject.tag == "playAreaBorder")
+        {
+            if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 3 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 4)
+            {
+                col.gameObject.SetActive(false);
+            }
+            
+        }
         
     }
+
+
 
     void AddPointsForItem(string itemName){
         scoreTemp += itemValues[itemName];
