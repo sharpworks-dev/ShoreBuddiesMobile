@@ -9291,6 +9291,19 @@ MonoBehaviour:
   - {fileID: 522894200}
   - {fileID: 1942864915}
   - {fileID: 19906398}
+  spawnPointsBoth:
+  - {fileID: 837825494}
+  - {fileID: 684563192}
+  - {fileID: 1413516418}
+  - {fileID: 45686838}
+  - {fileID: 354517156}
+  - {fileID: 333313428}
+  - {fileID: 583120943}
+  - {fileID: 1060177551}
+  - {fileID: 1134071032}
+  - {fileID: 522894200}
+  - {fileID: 1942864915}
+  - {fileID: 19906398}
 --- !u!4 &1454375906
 Transform:
   m_ObjectHideFlags: 0
