@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 using TMPro;
 using Photon.Pun;
 
@@ -11,6 +12,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]TextMeshProUGUI timerText;
     [SerializeField]TextMeshProUGUI itemsText;
     [SerializeField]TextMeshProUGUI scoreText;
+    [SerializeField]Camera myCamera;
+    [SerializeField]Canvas myCanvas;
+    [SerializeField]CinemachineVirtualCamera vCam;
 
     //Hide in inspect fields
     float timeRemaining = 10;
@@ -44,6 +48,10 @@ public class PlayerManager : MonoBehaviour
         timerIsRunning = true;
         items = new string[inventorySize];
         view = GetComponent<PhotonView>();
+        myCamera.gameObject.SetActive(true);
+        myCanvas.gameObject.SetActive(true);
+        CinemachineVirtualCamera myVCam = Instantiate(vCam, new Vector3(0, 0, 0), Quaternion.identity);
+        myVCam.Follow = gameObject.transform;
     }
 
     // Update is called once per frame.
@@ -51,7 +59,7 @@ public class PlayerManager : MonoBehaviour
     {   
         if(view.IsMine){
             if(Input.touchCount > 0){
-                targetPos = new Vector2(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).x, Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).y);
+                targetPos = new Vector2(myCamera.ScreenToWorldPoint(Input.GetTouch(0).position).x, myCamera.ScreenToWorldPoint(Input.GetTouch(0).position).y);
             }
 
             if(targetPos.x != transform.position.x || targetPos.y != transform.position.y){
