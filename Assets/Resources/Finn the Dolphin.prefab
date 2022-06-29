@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1813231962111584116}
   - component: {fileID: 2028087970352473944}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: FinnCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

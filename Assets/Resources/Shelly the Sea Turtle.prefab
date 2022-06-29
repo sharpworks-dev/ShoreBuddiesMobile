@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 1045184642580797986}
   - component: {fileID: 2724357203240302521}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: ShellyCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 5901838244446367827}
   - component: {fileID: 4228927469837952760}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: EmmaCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
