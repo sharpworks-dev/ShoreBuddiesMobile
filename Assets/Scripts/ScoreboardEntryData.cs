@@ -1,6 +1,6 @@
 using System;
 
-namespace boards.Scoreboards
+namespace Boards.Scoreboards
 {
 	//save data in a way to format to computer
 	[Serializable]

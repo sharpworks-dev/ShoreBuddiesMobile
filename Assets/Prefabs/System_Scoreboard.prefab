@@ -171,6 +171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9217573997249475500}
+  - component: {fileID: 8790436924050564101}
   m_Layer: 0
   m_Name: System_Scoreboard
   m_TagString: Untagged
@@ -194,6 +195,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8790436924050564101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971794920951490397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9f38355db9d4a27996381ada5642ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxScoreboardEntries: 4
+  highscoresHolderTransform: {fileID: 3895695667265277659}
+  scoreboardEntryObject: {fileID: 2907915419205083642}
+  testEntrydata:
+    entryName: TestName
+    entryScore: 1000
 --- !u!1001 &1623824355376046893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -291,6 +310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3a6e4271f02a4fdfb2b44d4cee73b95, type: 3}
+--- !u!1 &2907915419205083642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4526687238721405655, guid: c3a6e4271f02a4fdfb2b44d4cee73b95, type: 3}
+  m_PrefabInstance: {fileID: 1623824355376046893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5742464967059180934 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6429362167117590187, guid: c3a6e4271f02a4fdfb2b44d4cee73b95, type: 3}

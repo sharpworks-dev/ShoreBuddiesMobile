@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace boards.Scoreboards
+namespace Boards.Scoreboards
 {
 	[Serializable]
 	public class ScoreboardSaveData

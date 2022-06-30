@@ -1,16 +1,18 @@
 using UnityEngine;
 using TMPro;
 
-namespace boards.Scoreboards
-
-public class ScoreboardEntryUI : MonoBehaviour
+namespace Boards.Scoreboards 
 {
-   [SerializeField] private TextMeshProUGUI entryNameText = null;
-   [SerializeField] private TextMeshProUGUI entryScoreText = null;
 
-   public void Initialise(ScoreboardEntryData scoreboardEntryData)
+   public class ScoreboardEntryUI : MonoBehaviour
    {
-   		entryNameText.text = scoreboardEntryData.entryName;
-   		entryScoreText.text = scoreboardEntryData.entryScore.ToString();
+      [SerializeField] private TextMeshProUGUI entryNameText = null;
+      [SerializeField] private TextMeshProUGUI entryScoreText = null;
+
+      public void Initialise(ScoreboardEntryData scoreboardEntryData)
+      {
+            entryNameText.text = scoreboardEntryData.entryName;
+            entryScoreText.text = scoreboardEntryData.entryScore.ToString();
+      }
    }
 }
