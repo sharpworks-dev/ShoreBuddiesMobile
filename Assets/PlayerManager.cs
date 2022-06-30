@@ -92,7 +92,7 @@ public class PlayerManager : MonoBehaviour
                 timerIsRunning = false;
 
                 // ========================= INSERT SWAP TO SCOREBOARD SCENE ============================ //
-                // PhotonNetwork.LoadLevel("");
+                PhotonNetwork.LoadLevel("Lobby");
             }
         }
 
