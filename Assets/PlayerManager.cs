@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]CinemachineVirtualCamera vCam;
 
     //Hide in inspect fields
-    float timeRemaining = 10;
+    float timeRemaining = 60;
     bool timerIsRunning = false;
     SpriteRenderer renderer;
     Vector2 targetPos;
@@ -90,6 +90,9 @@ public class PlayerManager : MonoBehaviour
                 timerText.text = "Game over";
                 timeRemaining = 0;
                 timerIsRunning = false;
+
+                // ========================= INSERT SWAP TO SCOREBOARD SCENE ============================ //
+                // PhotonNetwork.LoadLevel("");
             }
         }
 

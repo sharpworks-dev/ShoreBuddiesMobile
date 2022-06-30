@@ -13,7 +13,10 @@ public class PlayerSpawner : MonoBehaviour
     CinemachineVirtualCamera vcam;
 
     private void Start()
-    {
+    {   
+        PhotonNetwork.CurrentRoom.IsVisible = false;
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+
         if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 1 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 2)
         {
             int randomNumber = Random.Range(0, spawnPointsOcean.Length);
