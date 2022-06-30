@@ -7,7 +7,6 @@ TagManager:
   - Obstacle
   - RecycleBin
   - item
-  - playAreaBorder
   layers:
   - Default
   - TransparentFX

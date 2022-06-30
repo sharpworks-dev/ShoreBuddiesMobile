@@ -31,7 +31,6 @@ public class PlayerManager : MonoBehaviour
     PhotonView view;
 
     int currentSize = 0;
-    bool CR_running = false;
 
     // Start is called before the first frame update.
     void Start()
@@ -66,7 +65,8 @@ public class PlayerManager : MonoBehaviour
             if(Input.touchCount > 0){
                 targetPos = new Vector2(myCamera.ScreenToWorldPoint(Input.GetTouch(0).position).x, myCamera.ScreenToWorldPoint(Input.GetTouch(0).position).y);
             }
-            if(targetPos.x != transform.position.x || targetPos.y != transform.position.y && CR_running == false){
+
+            if(targetPos.x != transform.position.x || targetPos.y != transform.position.y){
                 if(targetPos.x > transform.position.x)
                     renderer.flipX = true;
                 else
@@ -130,40 +130,8 @@ public class PlayerManager : MonoBehaviour
             // Debug.Log(score);
             // Debug.Log(itemsCollected);
         }
-
-        if(col.gameObject.tag == "playAreaBorder")
-        {
-            if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 3 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 4)
-            {
-                col.gameObject.SetActive(false);
-            }
-            else
-            {
-                targetPos = new Vector2(transform.position.x, transform.position.y);
-            }
-        }
-
-        if(col.gameObject.name == "ChangeSpeed")
-        {
-            if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 3)
-            {
-                moveSpeed = moveSpeed * 0.667f;
-            }
-        }
         
     }
-    void OnTriggerExit2D(Collider2D col)
-    {
-        if(col.gameObject.name == "ChangeSpeed")
-        {
-            if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 3)
-            {
-                moveSpeed = moveSpeed * 1.5f;
-            }
-        }
-    }
-
-
 
     void AddPointsForItem(string itemName){
         scoreTemp += itemValues[itemName];

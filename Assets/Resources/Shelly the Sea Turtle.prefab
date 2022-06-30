@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7bcbb9a15fc494fb97ad74ba84fca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 15
   inventorySize: 6
   timerText: {fileID: 5063428071851250086}
   itemsText: {fileID: 2200115803431468490}
