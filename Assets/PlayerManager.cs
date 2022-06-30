@@ -31,6 +31,7 @@ public class PlayerManager : MonoBehaviour
     PhotonView view;
 
     int currentSize = 0;
+    bool CR_running = false;
 
     // Start is called before the first frame update.
     void Start()
@@ -66,7 +67,7 @@ public class PlayerManager : MonoBehaviour
                 targetPos = new Vector2(myCamera.ScreenToWorldPoint(Input.GetTouch(0).position).x, myCamera.ScreenToWorldPoint(Input.GetTouch(0).position).y);
             }
 
-            if(targetPos.x != transform.position.x || targetPos.y != transform.position.y){
+            if(targetPos.x != transform.position.x || targetPos.y != transform.position.y && CR_running == false){
                 if(targetPos.x > transform.position.x)
                     renderer.flipX = true;
                 else
@@ -136,6 +137,10 @@ public class PlayerManager : MonoBehaviour
             if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 3 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 4)
             {
                 col.gameObject.SetActive(false);
+            }
+            else
+            {
+                targetPos = new Vector2(transform.position.x, transform.position.y);
             }
             
         }
