@@ -48,9 +48,9 @@ public class PlayerManager : MonoBehaviour
         timerIsRunning = true;
         items = new string[inventorySize];
         view = GetComponent<PhotonView>();
-        myCamera.gameObject.SetActive(true);
-        myCanvas.gameObject.SetActive(true);
         if(view.IsMine){
+            myCamera.gameObject.SetActive(true);
+            myCanvas.gameObject.SetActive(true);
             CinemachineVirtualCamera myVCam = Instantiate(vCam, new Vector3(0, 0, 0), Quaternion.identity);
             myVCam.gameObject.SetActive(true);
             myVCam.Follow = gameObject.transform;
