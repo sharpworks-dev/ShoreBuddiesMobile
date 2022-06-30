@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]CinemachineVirtualCamera vCam;
 
     //Hide in inspect fields
-    float timeRemaining = 60;
+    float timeRemaining = 10;
     bool timerIsRunning = false;
     SpriteRenderer renderer;
     Vector2 targetPos;
@@ -48,15 +48,13 @@ public class PlayerManager : MonoBehaviour
         timerIsRunning = true;
         items = new string[inventorySize];
         view = GetComponent<PhotonView>();
+        myCamera.gameObject.SetActive(true);
+        myCanvas.gameObject.SetActive(true);
         if(view.IsMine){
-            myCamera.gameObject.SetActive(true);
-            myCanvas.gameObject.SetActive(true);
-            CinemachineVirtualCamera myVCam = Instantiate(vCam, new Vector3(0, 0, 0), Quaternion.identity);
+            CinemachineVirtualCamera myVCam = Instantiate(vCam, new Vector3(0, 0, 0), Quaternion.identity, gameObject.transform);
             myVCam.gameObject.SetActive(true);
             myVCam.Follow = gameObject.transform;
-            myVCam.gameObject.transform.position = new Vector3(0, 0, 0);
             myVCam.Priority = 10;
-            myVCam.gameObject.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = GameObject.Find("CameraBounds").GetComponent<PolygonCollider2D>();
         }
     }
 
@@ -90,9 +88,6 @@ public class PlayerManager : MonoBehaviour
                 timerText.text = "Game over";
                 timeRemaining = 0;
                 timerIsRunning = false;
-
-                // ========================= INSERT SWAP TO SCOREBOARD SCENE ============================ //
-                // PhotonNetwork.LoadLevel("");
             }
         }
 
