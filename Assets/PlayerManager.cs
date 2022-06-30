@@ -136,6 +136,36 @@ public class PlayerManager : MonoBehaviour
             // Debug.Log(itemsCollected);
         }
         
+        if(col.gameObject.tag == "playAreaBorder")
+            {
+                if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 3 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 4)
+                {
+                    col.gameObject.SetActive(false);
+                }
+                else
+                {
+                    targetPos = new Vector2(transform.position.x, transform.position.y);
+                }
+            }
+
+            if(col.gameObject.name == "ChangeSpeed")
+            {
+                if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 3)
+                {
+                    moveSpeed = moveSpeed * 0.667f;
+                }
+            }
+            
+        }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if(col.gameObject.name == "ChangeSpeed")
+        {
+            if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 3)
+            {
+                moveSpeed = moveSpeed * 1.5f;
+            }
+        }
     }
 
     void AddPointsForItem(string itemName){
