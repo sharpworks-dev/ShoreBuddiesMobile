@@ -66,7 +66,6 @@ public class PlayerManager : MonoBehaviour
             if(Input.touchCount > 0){
                 targetPos = new Vector2(myCamera.ScreenToWorldPoint(Input.GetTouch(0).position).x, myCamera.ScreenToWorldPoint(Input.GetTouch(0).position).y);
             }
-
             if(targetPos.x != transform.position.x || targetPos.y != transform.position.y && CR_running == false){
                 if(targetPos.x > transform.position.x)
                     renderer.flipX = true;
@@ -142,9 +141,26 @@ public class PlayerManager : MonoBehaviour
             {
                 targetPos = new Vector2(transform.position.x, transform.position.y);
             }
-            
+        }
+
+        if(col.gameObject.name == "ChangeSpeed")
+        {
+            if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0)
+            {
+                moveSpeed = moveSpeed * 0.667f;
+            }
         }
         
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if(col.gameObject.name == "ChangeSpeed")
+        {
+            if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0)
+            {
+                moveSpeed = moveSpeed * 1.5f;
+            }
+        }
     }
 
 
