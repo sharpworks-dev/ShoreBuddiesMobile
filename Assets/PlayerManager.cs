@@ -145,7 +145,7 @@ public class PlayerManager : MonoBehaviour
 
         if(col.gameObject.name == "ChangeSpeed")
         {
-            if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0)
+            if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 3)
             {
                 moveSpeed = moveSpeed * 0.667f;
             }
@@ -156,7 +156,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(col.gameObject.name == "ChangeSpeed")
         {
-            if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0)
+            if((int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 0 || (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] == 3)
             {
                 moveSpeed = moveSpeed * 1.5f;
             }
