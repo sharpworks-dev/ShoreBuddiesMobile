@@ -52,10 +52,12 @@ public class PlayerManager : MonoBehaviour
         myCamera.gameObject.SetActive(true);
         myCanvas.gameObject.SetActive(true);
         if(view.IsMine){
-            CinemachineVirtualCamera myVCam = Instantiate(vCam, new Vector3(0, 0, 0), Quaternion.identity, gameObject.transform);
+            CinemachineVirtualCamera myVCam = Instantiate(vCam, new Vector3(0, 0, 0), Quaternion.identity);
             myVCam.gameObject.SetActive(true);
             myVCam.Follow = gameObject.transform;
+            myVCam.gameObject.transform.position = new Vector3(0, 0, 0);
             myVCam.Priority = 10;
+            myVCam.gameObject.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = GameObject.Find("CameraBounds").GetComponent<PolygonCollider2D>();
         }
     }
 
